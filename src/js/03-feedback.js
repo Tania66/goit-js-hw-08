@@ -23,10 +23,6 @@ localStorage.setItem(LOCALSTORAGE_KEY,JSON.stringify(formData));
 
 
 
-
-
-
-
 function populateMessageOutput() {
 
 const saveMassege = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
