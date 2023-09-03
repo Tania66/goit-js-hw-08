@@ -4,53 +4,48 @@ const form = document.querySelector(".feedback-form");
 const textarea = document.querySelector("textarea");
 const input = document.querySelector("input");
 const LOCALSTORAGE_KEY = "feedback-form-state";
-const formData = {};
-populateMessageOutput();
+
 
 
 form.addEventListener('submit', onFormSubmit);
 form.addEventListener('input' , throttle(onItputForm, 500));
 
 
-
+let formData = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)) || {};
+populateMessageOutput();
 
 
 function onItputForm(e){
 
- formData[e.target.name] = e.target.value;
-localStorage.setItem(LOCALSTORAGE_KEY,JSON.stringify(formData));
+	formData[e.target.name] = e.target.value;
+	console.log(localStorage.setItem(LOCALSTORAGE_KEY,JSON.stringify(formData)));
 }
-
 
 
 function populateMessageOutput() {
 
-const saveMassege = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-
- if (saveMassege) {
-
-console.log(saveMassege);
-textarea.value = saveMassege.message;
-input.value = saveMassege.email;
-  }
-   
+if (formData) {
+	textarea.value = formData.message || '';
+		input.value = formData.email ||'';
+		console.log(formData);
+}
 
 }
 
 
 
 function onFormSubmit(event) {
-    event.preventDefault();
+	event.preventDefault();
 
-event.currentTarget.reset();
-localStorage.removeItem(LOCALSTORAGE_KEY);
 console.log(formData);
+
+	if (input.value === '' || textarea.value === '') {
+		return alert('Please fill in all the fields!');
+	  }
+
+	localStorage.removeItem(LOCALSTORAGE_KEY);
+	event.currentTarget.reset();
+	formData ={};
+	
 }
-
-
-
-
-
-
-
-
+	
