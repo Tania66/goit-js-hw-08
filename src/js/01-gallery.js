@@ -1,5 +1,5 @@
 import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 
 import { galleryItems } from './gallery-items';
@@ -26,4 +26,7 @@ function createGalleryItems (items){
 }
 
 
-const lightbox = new SimpleLightbox('.gallery a', { captionData: 'alt',  captionDelay: 250});
+const lightbox = new SimpleLightbox('.gallery a', {
+   captionDelay: 250,
+   captionsData: 'alt',
+ });

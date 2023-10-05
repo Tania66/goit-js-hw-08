@@ -27,7 +27,7 @@ function populateMessageOutput() {
 if (formData) {
 	textarea.value = formData.message || '';
 		input.value = formData.email ||'';
-		console.log(formData);
+	return;
 }
 
 }
@@ -37,14 +37,14 @@ if (formData) {
 function onFormSubmit(event) {
 	event.preventDefault();
 
-console.log(formData);
+console.log(JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)));
 
 	if (input.value === '' || textarea.value === '') {
 		return alert('Please fill in all the fields!');
 	  }
-
+	 
 	localStorage.removeItem(LOCALSTORAGE_KEY);
-	event.currentTarget.reset();
+	form.reset();
 	formData ={};
 	
 }
