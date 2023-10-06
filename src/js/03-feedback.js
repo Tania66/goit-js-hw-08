@@ -18,7 +18,7 @@ populateMessageOutput();
 function onItputForm(e){
 
 	formData[e.target.name] = e.target.value;
-	console.log(localStorage.setItem(LOCALSTORAGE_KEY,JSON.stringify(formData)));
+	localStorage.setItem(LOCALSTORAGE_KEY,JSON.stringify(formData));
 }
 
 
